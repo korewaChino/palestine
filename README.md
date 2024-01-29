@@ -33,7 +33,22 @@ Kind: PalestineCluster
 metadata:
   name: palestine-testing
 spec:
-  replicas: 3
-  volumeClaimTemplate:
-    storageClass: local-path # get your own storageclass
+  replicas: 3 # run redundant copies of palestine for HA
+  forcedGore: true # forces users to watch gore on twitter
+
+  xApi: # 𝕏 API keys to post the 𝕏emes
+    secretName: x-api-key
+    key: api_key
+    
+  leaderElection: true # NOT political leader, this is a raft cluster leader that runs the palestine program
+
+  storageBackend: disk
+
+  postgresql:
+    endpoint: postgresql.postgresql.svc.cluster.local
+    secret: idfk
+
+  diskStorage: # store state on disk
+    volumeClaimTemplate: # store palestine state on your hard drives today!
+      storageClass: local-path # get your own storageclass
 ```
