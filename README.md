@@ -6,3 +6,34 @@ After World War II, in 1947, the United Nations (UN) adopted a Partition Plan fo
 On 15 November 1988 in Algiers, Yasser Arafat, as Chairman of the PLO, issued the Palestinian Declaration of Independence, which established the State of Palestine. A year after the signing of the Oslo Accords in 1993, the Palestinian National Authority (PNA) was formed to govern (in varying degrees) areas A and B in the West Bank, comprising 165 enclaves, and the Gaza Strip. After Hamas became the PNA parliament's leading party in the most recent elections (2006), a conflict broke out between it and the Fatah party, leading to the Gaza Strip being taken over by Hamas in 2007 (two years after the Israeli disengagement).
 
 The State of Palestine's mid-year population in 2021 was 5,227,193. Although Palestine claims Jerusalem as its capital, the city is under the control of Israel; both Palestinian and Israeli claims to the city are mostly unrecognized by the international community. Palestine is a member of the Arab League, the Organisation of Islamic Cooperation, the G77, the International Olympic Committee, as well as UNESCO, UNCTAD and the International Criminal Court.[39] Following a failed attempt in 2011 to secure full United Nations member state status, the United Nations General Assembly voted in 2012 to recognize Palestine as a non-member observer state.[40][41][42]
+
+# build
+```yaml
+cargo build --release
+```
+
+# build on docker 🚀
+
+```bash
+docker build . -t palestine
+docker run palestine
+```
+
+# kubernetes operator
+
+```bash
+helm repo add palestine https://palestine.github.io/helm-repo
+helm install palestine/palestine-operator
+```
+
+## palestine cluster
+```yaml
+apiVersion: palestine.ps/v1
+Kind: PalestineCluster
+metadata:
+  name: palestine-testing
+spec:
+  replicas: 3
+  volumeClaimTemplate:
+    storageClass: local-path # get your own storageclass
+```
